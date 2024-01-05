@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include<Windows.h>
+
 #pragma comment(lib, "winmm.lib")
 #include<iomanip>
 
@@ -99,7 +100,7 @@ void initializePlayer(Player& player)
         getline(cin, player.name);
         player.name = input(player.name);
         player.name = upperString(player.name);
-        getValidName(player.name);
+        player.name = getValidName(player.name);
         if (player.name.length() > !3 && player.name.length() < !8)
         {
             cout << "Length must between 3 to 8 characters.\nEnter name: ";
@@ -112,12 +113,12 @@ void initializePlayer(Player& player)
     while (true)
     {
         cout << endl << setw(55) << "CLASSES";
-        cout << "\n\n*Warrior\n\n*Mage\n\n*Rogue" << endl;
+        cout << "\n\n*WARRIOR\n\n*MAGE\n\n*ROGUE" << endl;
         cout << "\nChoose your class: ";
         getline(cin, player.playerClass);
         player.playerClass = input(player.playerClass);
-        player.playerClass = lowerString(player.playerClass);
-        if (player.playerClass == "warrior" || player.playerClass == "mage" || player.playerClass == "rogue")
+        player.playerClass = upperString(player.playerClass);
+        if (player.playerClass == "WARRIOR" || player.playerClass == "MAGE" || player.playerClass == "ROGUE")
         {
             break;
         }
@@ -281,77 +282,69 @@ int PlayerAttack(Player& player)
     ch = lowerString(ch);
     while (true)
     {
-        if (!cin.eof() && !cin.fail())
+
+        if (ch == "1")
         {
-            if (ch == "1")
-            {
-                player.attack = 3;
-                return player.attack;
-                true;
-            }
-            else if (ch == "2")
-            {
-                player.attack = 6;
-                return player.attack;
-                true;
-            }
-            else if (ch == "3")
-            {
-                player.attack = 9;
-                return player.attack;
-                true;
-            }
-            else if (ch == "4")
-            {
-                player.attack = 12;
-                return player.attack;
-                true;
-            }
-            else if (ch == "5")
-            {
-                player.attack = 15;
-                return player.attack;
-                true;
-            }
-            else if (ch == "6")
-            {
-                player.attack = 18;
-                return player.attack;
-                true;
-            }
-            else if (ch == "7")
-            {
-                player.attack = 21;
-                return player.attack;
-                true;
-            }
-            else if (ch == "8")
-            {
-                player.attack = 24;
-                return player.attack;
-                true;
-            }
-            else if (ch == "9")
-            {
-                player.attack = 27;
-                return player.attack;
-                true;
-            }
-            else if (ch == "0")
-            {
-                player.attack = 50;
-                return player.attack;
-                true;
-            }
-            else
-            {
-                player.attack = 0;
-                break;
-            }
+            player.attack = 3;
+            return player.attack;
+            true;
         }
-        else if (cin.eof() && cin.fail())
+        else if (ch == "2")
         {
-            cin.clear();
+            player.attack = 6;
+            return player.attack;
+            true;
+        }
+        else if (ch == "3")
+        {
+            player.attack = 9;
+            return player.attack;
+            true;
+        }
+        else if (ch == "4")
+        {
+            player.attack = 12;
+            return player.attack;
+            true;
+        }
+        else if (ch == "5")
+        {
+            player.attack = 15;
+            return player.attack;
+            true;
+        }
+        else if (ch == "6")
+        {
+            player.attack = 18;
+            return player.attack;
+            true;
+        }
+        else if (ch == "7")
+        {
+            player.attack = 21;
+            return player.attack;
+            true;
+        }
+        else if (ch == "8")
+        {
+            player.attack = 24;
+            return player.attack;
+            true;
+        }
+        else if (ch == "9")
+        {
+            player.attack = 27;
+            return player.attack;
+            true;
+        }
+        else if (ch == "0")
+        {
+            player.attack = 50;
+            return player.attack;
+            true;
+        }
+        else
+        {
             player.attack = 0;
             break;
         }
@@ -380,10 +373,11 @@ void battle(Player& player, Enemy& enemy)
                 {
                     player.health = 0;
                     cout << "\nYour Health: " << player.health << setw(25) << enemy.enemyName << " Health: " << enemy.enemyHealth << endl;
-                    while (true)
-                    {
+                    
 
                         cout << "You were defeated.\n\n";
+                        while (true)
+                        {
                     up:
                         cout << "Do you want to play again(Y / N)...";
                         string choice;
@@ -417,6 +411,11 @@ void battle(Player& player, Enemy& enemy)
                                 cout << "Invalid Input.";
                                 goto jump;
                             }
+                        }
+                        else
+                        {
+                            cout << "Invalid Input." << endl;
+                           
                         }
                     };
                 }
@@ -470,21 +469,43 @@ void Controlls()
 
 void StoryLine(Player& player)
 {
-    cout << setw(50) << "LEVEL 1" << endl << endl;
-    cout << setw(30) << "Player" << setw(18) << "V/S" << setw(30) << "DOCTOR" << endl;
-    cout << "\nPlayer Weapon: UMP-45 " << endl;
-    cout << "\n" << setw(50) << "LEVEL 2" << endl << endl;
-    cout << setw(30) << "PLayer" << setw(18) << "V/S" << setw(30) << "SARA" << endl;
-    cout << "\nPlayer Weapon: M416" << endl;
-    cout << "\n" << setw(50) << "LEVEL 3" << endl << endl;
-    cout << setw(30) << "Player" << setw(18) << "V/S" << setw(30) << "ANNA" << endl;
-    cout << "\nPlayer Weapon: AKM" << endl;
-    cout << "\n" << setw(50) << "LEVEL 4" << endl << endl;
-    cout << setw(30) << "Player" << setw(18) << "V/S" << setw(30) << "CARLO" << endl;
-    cout << "\nPlayer Weapon: AWM" << endl;
-    cout << "\n" << setw(50) << "LEVEL 5" << endl << endl;
-    cout << setw(30) << "player" << setw(18) << "V/S" << setw(30) << "ANDY" << endl;
-    cout << "\nPlayer Weapon: LMG " << endl;
+    cout << setw(50) << "Combat Chronicles: The Battle Begins" << endl << endl;
+    cout << "In the realm of Valor, where tales of heroes echo through time," << endl;
+    cout << "the Combat Chronicles unveil legendary battles and untold bravery." << endl << endl;
+
+    Sleep(3000);
+
+    cout << "Level 1 - Enter the Arena:" << endl;
+    cout << "Your journey commences against Doctor, once a healer turned to dark arts." << endl;
+    cout << "He wields twisted magic, challenge him to begin your odyssey." << endl << endl;
+
+    Sleep(3000);
+
+    cout << "Level 2 - Shadows of Deception:" << endl;
+    cout << "Sara, Andy's stealthy assassin, lurks in the shadows, waiting for a challenger." << endl;
+    cout << "Unveil her stealth and outwit her to continue your epic quest." << endl << endl;
+
+    Sleep(3000);
+
+    cout << "Level 3 - Arcane Secrets:" << endl;
+    cout << "Anna, the sorceress wielding forbidden magic, stands guard in this realm." << endl;
+    cout << "Confront her arcane powers and surpass this mystical challenge." << endl << endl;
+
+    Sleep(3000);
+
+    cout << "Level 4 - Fortress of Strength:" << endl;
+    cout << "Carlo, the unyielding guardian of Andy's fortress, awaits your arrival." << endl;
+    cout << "Defeat his formidable strength and tactics to reach the final encounter." << endl << endl;
+
+    Sleep(3000);
+
+    cout << "Final Showdown - Dark Sorcerer's Domain:" << endl;
+    cout << "Prepare for the ultimate confrontation against Andy, the malevolent sorcerer." << endl;
+    cout << "Unleash your valor to rewrite the Chronicles and claim victory!" << endl << endl;
+
+    Sleep(3000);
+
+    cout << "Embark on this legendary journey, rewrite the Chronicles of Combat, and emerge as the hero of Valor!" << endl << endl;
 }
 void End(Player& player, Enemy& enemy)
 {
@@ -527,7 +548,6 @@ jump:
                 choice = input(choice);
                 choice = lowerString(choice);
             } while (choice != "y");
-            true;
             main();
             break;
         }
@@ -708,7 +728,6 @@ jump:
                 choice = lowerString(choice);
                 choice = lowerString(choice);
             } while (choice != "y");
-            true;
             main();
             break;
         }
@@ -724,16 +743,14 @@ jump:
                 choice = input(choice);
                 choice = lowerString(choice);
             } while (choice != "y");
-            true;
             main();
             break;
 
         }
-
         else if (ch == "5")
         {
             system("cls");
-            cout << "\n\n\n\n\n\n";
+            cout << "\n\n\n\n\n\n\n\n";
             Quit();
             break;
         }
@@ -744,5 +761,3 @@ jump:
         }
     };
 }
-
-
