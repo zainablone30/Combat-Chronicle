@@ -1,0 +1,7 @@
+﻿  Combat Chronicles .cpp
+C:\Users\malik\Desktop\Combat Chronicles\Project1\Code\Combat Chronicles .cpp(104,31): warning C4804: '>': unsafe use of type 'bool' in operation
+C:\Users\malik\Desktop\Combat Chronicles\Project1\Code\Combat Chronicles .cpp(104,60): warning C4804: '<': unsafe use of type 'bool' in operation
+C:\Users\malik\Desktop\Combat Chronicles\Project1\Code\Combat Chronicles .cpp(240,1): warning C4715: 'Weapon': not all control paths return a value
+C:\Users\malik\Desktop\Combat Chronicles\Project1\Code\Combat Chronicles .cpp(274,1): warning C4715: 'levelUp': not all control paths return a value
+C:\Users\malik\Desktop\Combat Chronicles\Project1\Code\Combat Chronicles .cpp(360,1): warning C4715: 'PlayerAttack': not all control paths return a value
+  Project1.vcxproj -> C:\Users\malik\Desktop\Combat Chronicles\Project1\x64\Debug\Project1.exe
